@@ -1,0 +1,38 @@
+# ================================================================
+# Auth Service - Python Dependencies
+# ================================================================
+
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Database — multi-provider (SQLAlchemy async across sqlite/mysql/postgres/supabase)
+# Switch databases by changing ONLY DATABASE_PROVIDER + DATABASE_URL in .env.
+asyncpg==0.29.0           # postgres / supabase async driver
+sqlalchemy==2.0.23        # ORM used by all SQL providers
+aiosqlite==0.19.0         # DATABASE_PROVIDER=sqlite
+aiomysql==0.2.0           # DATABASE_PROVIDER=mysql
+greenlet==3.0.3           # required by SQLAlchemy async
+
+# Security & Cryptography
+bcrypt==4.1.1
+PyJWT==2.10.1
+# jwt_validation.py (shared security module) validates tokens via python-jose
+# TODO: upgrade to >=3.4.0 (CVE-2024-33663/33664) once available
+python-jose[cryptography]==3.4.0  # CVE-2024-33663/33664 fixed
+cryptography==43.0.1  # security patch (H-3)
+
+# HTTP Client (for inter-service calls)
+aiohttp==3.9.1
+
+# Environment Management
+python-dotenv==1.0.0
+
+# Development & Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2
+alembic==1.18.5  # schema migrations (Phase 2 / unblocks H-4)
+-e ../libs/gdb_common  # shared internal package (Phase 3.1)

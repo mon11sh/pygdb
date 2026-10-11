@@ -1,0 +1,131 @@
+# =============================================================================
+# GDB — base Docker stack (8 backends + API gateway + registry + web).
+# NO external database here.
+#
+# By itself this runs the IN-MEMORY provider (zero setup, data resets on stop):
+#     docker compose up --build
+#
+# Entry points once up:
+#   • http://localhost:3000        web app (admin / Welcome@1)
+#   • http://localhost:8000/<svc>/…  API gateway (single entry, path-routed)
+#   • http://localhost:8010        service registry (discovery)
+#   • http://localhost:8001..8008  backends directly (published for dev)
+#
+# To use a real database, layer a provider override on top (or use the helper
+# `python docker_up.py <provider>`):
+#     docker compose -f docker-compose.yml -f docker-compose.postgres.yml up --build
+#     docker compose -f docker-compose.yml -f docker-compose.mysql.yml    up --build
+#     docker compose -f docker-compose.yml -f docker-compose.sqlite.yml   up --build
+#     docker compose -f docker-compose.yml -f docker-compose.supabase.yml up --build
+#
+# Open http://localhost:3000  and log in with  admin / Welcome@1
+#
+# Networking (all env-driven, no code changes):
+#   • BROWSER  → services on localhost:8001..8008 (published ports).
+#   • SERVICE  → service by container name (http://auth-service:8004 …).
+# =============================================================================
+
+# Inter-service URLs + shared secret, identical for every backend.
+x-service-env: &service-env
+  AUTH_SERVICE_URL: http://auth-service:8004
+  USERS_SERVICE_URL: http://users-service:8003
+  USER_SERVICE_URL: http://users-service:8003
+  ACCOUNTS_SERVICE_URL: http://accounts-service:8001
+  ACCOUNT_SERVICE_URL: http://accounts-service:8001
+  TRANSACTIONS_SERVICE_URL: http://transactions-service:8002
+  TRANSACTION_SERVICE_URL: http://transactions-service:8002
+  AADHAR_SERVICE_URL: http://aadhar-service:8005
+  COMPANY_SERVICE_URL: http://company-service:8006
+  NOTIFICATION_SERVICE_URL: http://notification-service:8007
+  PAYMENT_GATEWAY_SERVICE_URL: http://payment-gateway-service:8008
+  INTERNAL_API_KEY: dev-internal-api-key-change-in-prod
+
+services:
+  # ------------------------------------------------------------ core services
+  # DATABASE_PROVIDER defaults to inmemory here; a provider override replaces it.
+  auth-service:
+    build: { context: ., dockerfile: auth_service/Dockerfile }
+    ports: ["8004:8004"]
+    environment:
+      <<: *service-env
+      DATABASE_PROVIDER: inmemory
+
+  users-service:
+    build: { context: ., dockerfile: users_service/Dockerfile }
+    ports: ["8003:8003"]
+    environment:
+      <<: *service-env
+      DATABASE_PROVIDER: inmemory
+
+  accounts-service:
+    build: { context: ., dockerfile: accounts_service/Dockerfile }
+    ports: ["8001:8001"]
+    environment:
+      <<: *service-env
+      DATABASE_PROVIDER: inmemory
+
+  transactions-service:
+    build: { context: ., dockerfile: transactions_service/Dockerfile }
+    ports: ["8002:8002"]
+    environment:
+      <<: *service-env
+      DATABASE_PROVIDER: inmemory
+
+  # ------------------------------------------------------- mock/helper services
+  aadhar-service:
+    build: { context: ., dockerfile: aadhar_service/Dockerfile }
+    ports: ["8005:8005"]
+    environment: { <<: *service-env }
+
+  company-service:
+    build: { context: ., dockerfile: company_crv_service/Dockerfile }
+    ports: ["8006:8006"]
+    environment: { <<: *service-env }
+
+  notification-service:
+    build: { context: ., dockerfile: notification_service/Dockerfile }
+    ports: ["8007:8007"]
+    environment: { <<: *service-env }
+
+  payment-gateway-service:
+    build: { context: ., dockerfile: central_payment_gateway_service/Dockerfile }
+    ports: ["8008:8008"]
+    environment: { <<: *service-env }
+
+  # -------------------------------------------- microservice-pattern services
+  # Service Discovery registry (services register; clients resolve by name).
+  registry-service:
+    build: { context: ., dockerfile: registry_service/Dockerfile }
+    ports: ["8010:8010"]
+
+  # API Gateway — single public entry point, reverse-proxies to the backends by
+  # first path segment. Backends resolved via GATEWAY_<NAME>_URL (container DNS).
+  api-gateway:
+    build: { context: ., dockerfile: central_gateway_service/Dockerfile }
+    ports: ["8000:8000"]
+    environment:
+      GATEWAY_ACCOUNTS_URL: http://accounts-service:8001
+      GATEWAY_TRANSACTIONS_URL: http://transactions-service:8002
+      GATEWAY_USERS_URL: http://users-service:8003
+      GATEWAY_AUTH_URL: http://auth-service:8004
+      GATEWAY_AADHAR_URL: http://aadhar-service:8005
+      GATEWAY_COMPANY_URL: http://company-service:8006
+      GATEWAY_NOTIFICATION_URL: http://notification-service:8007
+      GATEWAY_PAYMENT_URL: http://payment-gateway-service:8008
+      # Per-client-IP rate limit (0 disables). Generous default; abuse -> 429.
+      GATEWAY_RATE_LIMIT_PER_MIN: "600"
+    depends_on:
+      - auth-service
+      - accounts-service
+      - transactions-service
+      - users-service
+
+  # -------------------------------------------------------------------- web app
+  frontend:
+    build: ./frontend
+    ports: ["3000:80"]
+    depends_on:
+      - auth-service
+      - accounts-service
+      - transactions-service
+      - users-service

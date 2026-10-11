@@ -1,0 +1,28 @@
+# Provider override: Supabase (cloud PostgreSQL — no local DB container).
+#   1) copy  supabase.env.example  →  .env  and fill in your Supabase values
+#   2) docker compose -f docker-compose.yml -f docker-compose.supabase.yml up --build
+#
+# Supabase gives ONE shared `postgres` database, so all services point at it.
+# Values below are read from the .env file next to this compose file.
+services:
+  auth-service:
+    environment:
+      DATABASE_PROVIDER: supabase
+      DATABASE_URL: ${SUPABASE_DATABASE_URL}
+  users-service:
+    environment:
+      DATABASE_PROVIDER: supabase
+      DATABASE_URL: ${SUPABASE_DATABASE_URL}
+  accounts-service:
+    environment:
+      DATABASE_PROVIDER: supabase
+      DATABASE_URL: ${SUPABASE_DATABASE_URL}
+  transactions-service:
+    # transactions uses the asyncpg path for supabase → DB_* (not DATABASE_URL)
+    environment:
+      DATABASE_PROVIDER: supabase
+      DB_HOST: ${SUPABASE_DB_HOST}
+      DB_PORT: ${SUPABASE_DB_PORT:-5432}
+      DB_USER: ${SUPABASE_DB_USER}
+      DB_PASSWORD: ${SUPABASE_DB_PASSWORD}
+      DB_NAME: ${SUPABASE_DB_NAME:-postgres}

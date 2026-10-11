@@ -1,0 +1,128 @@
+"""
+Example: Fixed Deposit Account Implementation
+
+This file demonstrates how to add a new account type to the system
+without modifying existing code (Open/Closed Principle).
+
+To activate this account type:
+1. Uncomment this file
+2. Register in AccountFactory (or add to _implementations dict)
+3. Add API endpoint in routes (optional)
+4. Add database table/columns if needed
+
+Author: GDB Architecture Team
+"""
+
+import logging
+from app.services.account_impl import AccountImpl
+from app.models.account import SavingsAccountCreate  # Replace with FixedDepositAccountCreate
+from app.repositories.account_repo import AccountRepository
+from app.utils.validators import (
+    validate_pin,
+    validate_name,
+    validate_privilege
+)
+
+logger = logging.getLogger(__name__)
+
+
+class FixedDepositImpl(AccountImpl):
+    """
+    Fixed Deposit Account implementation.
+    
+    Business Rules:
+    - Minimum deposit: ₹10,000
+    - Minimum tenure: 6 months
+    - Maximum tenure: 10 years
+    - Interest rate based on tenure
+    - Premature withdrawal penalty: 1%
+    - No age restriction
+    """
+    
+    def __init__(self):
+        """Initialize with repository access."""
+        self.repo = AccountRepository()
+    
+    async def open(
+        self,
+        account_data,  # Would be FixedDepositAccountCreate
+        pin_hash: str
+    ) -> int:
+        """
+        Open a new Fixed Deposit account.
+        
+        Validates:
+        - Valid PIN
+        - Minimum deposit amount (₹10,000)
+        - Valid tenure (6 months to 10 years)
+        - Valid interest rate
+        - Valid privilege level
+        
+        Args:
+            account_data: Fixed Deposit account creation data
+            pin_hash: Hashed PIN
+            
+        Returns:
+            Account number
+            
+        Raises:
+            ValidationError: If validation fails
+            MinimumDepositError: If deposit < ₹10,000
+            InvalidTenureError: If tenure out of range
+        """
+        logger.info(f"Opening Fixed Deposit account for: {account_data.name}")
+        
+        # Fixed Deposit specific validations
+        validate_name(account_data.name)
+        validate_pin(account_data.pin)
+        validate_privilege(account_data.privilege)
+        
+        # FD-specific validations (example - would need actual validators)
+        self._validate_deposit_amount(account_data.deposit_amount)
+        self._validate_tenure(account_data.tenure_months)
+        self._validate_interest_rate(account_data.interest_rate)
+        
+        # Create account via repository
+        # account_number = await self.repo.create_fixed_deposit_account(
+        #     account_data,
+        #     pin_hash
+        # )
+        
+        # For now, raise NotImplementedError
+        raise NotImplementedError("Fixed Deposit account creation not yet implemented in repository")
+        
+        # logger.info(f"✅ Fixed Deposit account created: {account_number}")
+        # return account_number
+    
+    def _validate_deposit_amount(self, amount: float) -> None:
+        """Validate minimum deposit amount."""
+        MIN_DEPOSIT = 10000.0
+        if amount < MIN_DEPOSIT:
+            raise ValueError(f"Minimum deposit amount is ₹{MIN_DEPOSIT:,.2f}")
+    
+    def _validate_tenure(self, months: int) -> None:
+        """Validate tenure is within allowed range."""
+        MIN_MONTHS = 6
+        MAX_MONTHS = 120  # 10 years
+        if not (MIN_MONTHS <= months <= MAX_MONTHS):
+            raise ValueError(f"Tenure must be between {MIN_MONTHS} and {MAX_MONTHS} months")
+    
+    def _validate_interest_rate(self, rate: float) -> None:
+        """Validate interest rate is reasonable."""
+        MIN_RATE = 3.0
+        MAX_RATE = 9.0
+        if not (MIN_RATE <= rate <= MAX_RATE):
+            raise ValueError(f"Interest rate must be between {MIN_RATE}% and {MAX_RATE}%")
+
+
+# To activate this account type, add to AccountFactory:
+# 
+# from app.services.fixed_deposit_impl import FixedDepositImpl
+# AccountFactory.register_account_type('FIXED_DEPOSIT', FixedDepositImpl)
+#
+# Or add to _implementations dict in account_factory.py:
+# _implementations = {
+#     'SAVINGS': SavingsImpl,
+#     'CURRENT': CurrentImpl,
+#     'FIXED_DEPOSIT': FixedDepositImpl,  # ← Add this
+# }

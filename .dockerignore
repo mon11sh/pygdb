@@ -1,0 +1,21 @@
+# Root build context is the repo root (so libs/ is reachable by every service
+# image). Keep the context small — never ship venvs, node_modules, or git into
+# the daemon. Explicit COPY lines in each Dockerfile pull only what they need.
+**/venv/
+**/.venv/
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.egg-info/
+.git/
+.github/
+**/*.db
+**/*.sqlite3
+**/logs/
+**/.pytest_cache/
+**/.env
+*.md
+*.html
+docs/
+Trainee_Codebase/

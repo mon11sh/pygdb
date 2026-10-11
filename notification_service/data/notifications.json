@@ -1,0 +1,649 @@
+[
+  {
+    "id": 1,
+    "recipient": "9999999999",
+    "message": "Test Message from Agent",
+    "type": "SMS",
+    "timestamp": "2026-01-23T23:01:42.964143",
+    "read": false
+  },
+  {
+    "id": 2,
+    "recipient": "1004",
+    "message": "Welcome Ramesh! Your Savings account 1004 is now active.",
+    "type": "SUCCESS",
+    "mode": null,
+    "timestamp": "2026-01-24T20:39:35.439134",
+    "read": true
+  },
+  {
+    "id": 3,
+    "recipient": "1005",
+    "message": "Welcome venkatesh.ai! Your Current account 1005 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-01-25T09:19:04.096055",
+    "read": true
+  },
+  {
+    "id": 4,
+    "recipient": "1006",
+    "message": "Welcome jeevan pvt ltd! Your Current account 1006 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-01-25T09:23:30.361576",
+    "read": true
+  },
+  {
+    "id": 5,
+    "recipient": "1000",
+    "message": "Sent: \u20b910000.0 via NEFT to Krishna Kumar (1001). Bal: \u20b9144947.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-01-25T09:28:17.616266",
+    "read": false
+  },
+  {
+    "id": 6,
+    "recipient": "1001",
+    "message": "Received: \u20b910000.0 via NEFT from Sala Anil Kumar (1000). Bal: \u20b9742053.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-01-25T09:28:17.936768",
+    "read": false
+  },
+  {
+    "id": 7,
+    "recipient": "1011",
+    "message": "Welcome Food Processing Industries Ltd! Your Current account 1011 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-02-02T14:45:14.718665",
+    "read": false
+  },
+  {
+    "id": 8,
+    "recipient": "1011",
+    "message": "Success! \u20b9899999.0 deposited via DIRECT to Alok Kumar (1011). New balance: \u20b9899999.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-02-02T17:18:55.373998",
+    "read": false
+  },
+  {
+    "id": 9,
+    "recipient": "1007",
+    "message": "Success! \u20b9500000.0 deposited via DIRECT to Sneha Reddy (1007). New balance: \u20b9502000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-02-02T17:24:41.858570",
+    "read": false
+  },
+  {
+    "id": 10,
+    "recipient": "1007",
+    "message": "Success! \u20b92000.0 withdrawn via ATM from Sneha Reddy (1007). New balance: \u20b9500000.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-02-02T17:50:46.243054",
+    "read": false
+  },
+  {
+    "id": 11,
+    "recipient": "1011",
+    "message": "Sent: \u20b999998.99 via NEFT to Sneha Reddy (1007). Bal: \u20b9800000.01",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-02T17:56:36.681655",
+    "read": false
+  },
+  {
+    "id": 12,
+    "recipient": "1007",
+    "message": "Received: \u20b999998.99 via NEFT from Alok Kumar (1011). Bal: \u20b9599998.99",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-02T17:56:37.035000",
+    "read": false
+  },
+  {
+    "id": 13,
+    "recipient": "1007",
+    "message": "Sent: \u20b949999.99 via NEFT to Jeevan (1006). Bal: \u20b9549999.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-03T10:09:38.929447",
+    "read": false
+  },
+  {
+    "id": 14,
+    "recipient": "1006",
+    "message": "Received: \u20b949999.99 via NEFT from Sneha Reddy (1007). Bal: \u20b949999.99",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-03T10:09:39.245924",
+    "read": false
+  },
+  {
+    "id": 15,
+    "recipient": "1000",
+    "message": "Sent: \u20b950000.0 via NEFT to Venkatesh (1005). Bal: \u20b994947.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-03T10:26:29.749198",
+    "read": false
+  },
+  {
+    "id": 16,
+    "recipient": "1005",
+    "message": "Received: \u20b950000.0 via NEFT from Sala Anil Kumar (1000). Bal: \u20b950000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-03T10:26:30.033206",
+    "read": false
+  },
+  {
+    "id": 17,
+    "recipient": "1006",
+    "message": "Success! \u20b99999.0 withdrawn via ATM from Jeevan (1006). New balance: \u20b940000.99.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-02-03T11:29:57.261497",
+    "read": false
+  },
+  {
+    "id": 18,
+    "recipient": "1005",
+    "message": "Sent: \u20b910000.0 via NEFT to Jeevan (1006). Bal: \u20b940000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-03T13:06:19.498971",
+    "read": false
+  },
+  {
+    "id": 19,
+    "recipient": "1011",
+    "message": "Success! \u20b92999999.96 deposited via DIRECT to Alok Kumar (1011). New balance: \u20b93799999.97.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-02-09T09:12:06.555765",
+    "read": false
+  },
+  {
+    "id": 20,
+    "recipient": "1012",
+    "message": "Welcome Karthik Iyer! Your Savings account 1012 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-02-09T09:21:09.660705",
+    "read": false
+  },
+  {
+    "id": 21,
+    "recipient": "1013",
+    "message": "Welcome Priya Sharma! Your Savings account 1013 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-02-09T10:48:05.523845",
+    "read": false
+  },
+  {
+    "id": 22,
+    "recipient": "1014",
+    "message": "Welcome Global Finance Ltd! Your Current account 1014 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-02-09T10:49:57.883477",
+    "read": false
+  },
+  {
+    "id": 23,
+    "recipient": "1007",
+    "message": "Success! \u20b95999.0 deposited via DIRECT to Sneha Reddy (1007). New balance: \u20b9555998.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-02-09T10:51:37.197884",
+    "read": false
+  },
+  {
+    "id": 24,
+    "recipient": "1007",
+    "message": "Success! \u20b9997.99 withdrawn via ATM from Sneha Reddy (1007). New balance: \u20b9555000.01.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-02-09T10:52:21.867218",
+    "read": false
+  },
+  {
+    "id": 25,
+    "recipient": "1003",
+    "message": "Sent: \u20b911000.0 via NEFT to Satya (1002). Bal: \u20b9989000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-09T10:55:07.395764",
+    "read": false
+  },
+  {
+    "id": 26,
+    "recipient": "1002",
+    "message": "Received: \u20b911000.0 via NEFT from Ramesh (1003). Bal: \u20b911000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-02-09T10:55:07.730191",
+    "read": false
+  },
+  {
+    "id": 27,
+    "recipient": "1002",
+    "message": "Welcome Priya Sharma! Your Savings account 1002 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-23T14:09:19.738854",
+    "read": false
+  },
+  {
+    "id": 28,
+    "recipient": "1002",
+    "message": "Success! \u20b950000.0 deposited via DIRECT to Priya Sharma (1002). New balance: \u20b952000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-23T14:10:16.034827",
+    "read": false
+  },
+  {
+    "id": 29,
+    "recipient": "1002",
+    "message": "Success! \u20b92000.0 withdrawn via ATM from Priya Sharma (1002). New balance: \u20b950000.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-23T14:10:50.238156",
+    "read": false
+  },
+  {
+    "id": 30,
+    "recipient": "1002",
+    "message": "Sent: \u20b910000.0 via NEFT to System Admin (1001). Bal: \u20b940000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-23T14:12:30.195475",
+    "read": false
+  },
+  {
+    "id": 31,
+    "recipient": "1001",
+    "message": "Received: \u20b910000.0 via NEFT from Priya Sharma (1002). Bal: \u20b910000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-23T14:12:30.518077",
+    "read": false
+  },
+  {
+    "id": 32,
+    "recipient": "1002",
+    "message": "Sent: \u20b910000.0 via RTGS to System Admin (1001). Bal: \u20b930000.0",
+    "type": "SUCCESS",
+    "mode": "RTGS",
+    "timestamp": "2026-07-23T14:24:13.162176",
+    "read": false
+  },
+  {
+    "id": 33,
+    "recipient": "1001",
+    "message": "Received: \u20b910000.0 via RTGS from Priya Sharma (1002). Bal: \u20b920000.0",
+    "type": "SUCCESS",
+    "mode": "RTGS",
+    "timestamp": "2026-07-23T14:24:13.477009",
+    "read": false
+  },
+  {
+    "id": 34,
+    "recipient": "1003",
+    "message": "Success! \u20b91000.0 deposited via DIRECT to John Doe (1003). New balance: \u20b96000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-23T15:14:51.642432",
+    "read": false
+  },
+  {
+    "id": 35,
+    "recipient": "1003",
+    "message": "Success! \u20b9500.0 withdrawn via ATM from Account (1003). New balance: \u20b94500.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-23T15:14:52.233176",
+    "read": false
+  },
+  {
+    "id": 36,
+    "recipient": "1003",
+    "message": "Sent: \u20b9500.0 via NEFT to Account (1004). Bal: \u20b94500.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-23T15:14:52.717679",
+    "read": false
+  },
+  {
+    "id": 37,
+    "recipient": "1004",
+    "message": "Received: \u20b9500.0 via NEFT from Account (1003). Bal: \u20b91500.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-23T15:14:53.047846",
+    "read": false
+  },
+  {
+    "id": 38,
+    "recipient": "1003",
+    "message": "Success! \u20b91000.0 deposited via DIRECT to John Doe (1003). New balance: \u20b96000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-23T15:15:59.810950",
+    "read": false
+  },
+  {
+    "id": 39,
+    "recipient": "1003",
+    "message": "Success! \u20b9500.0 withdrawn via ATM from Account (1003). New balance: \u20b94500.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-23T15:16:00.377719",
+    "read": false
+  },
+  {
+    "id": 40,
+    "recipient": "1003",
+    "message": "Sent: \u20b9500.0 via NEFT to Account (1004). Bal: \u20b94500.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-23T15:16:00.854923",
+    "read": false
+  },
+  {
+    "id": 41,
+    "recipient": "1004",
+    "message": "Received: \u20b9500.0 via NEFT from Account (1003). Bal: \u20b91500.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-23T15:16:01.194138",
+    "read": false
+  },
+  {
+    "id": 42,
+    "recipient": "1003",
+    "message": "Success! \u20b91000.0 deposited via DIRECT to John Doe (1003). New balance: \u20b96000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-23T15:17:16.510287",
+    "read": false
+  },
+  {
+    "id": 43,
+    "recipient": "1003",
+    "message": "Success! \u20b9500.0 withdrawn via ATM from Account (1003). New balance: \u20b94500.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-23T15:17:17.104402",
+    "read": false
+  },
+  {
+    "id": 44,
+    "recipient": "1003",
+    "message": "Sent: \u20b9500.0 via NEFT to Account (1004). Bal: \u20b94500.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-23T15:17:17.591608",
+    "read": false
+  },
+  {
+    "id": 45,
+    "recipient": "1004",
+    "message": "Received: \u20b9500.0 via NEFT from Account (1003). Bal: \u20b91500.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-23T15:17:17.968892",
+    "read": false
+  },
+  {
+    "id": 46,
+    "recipient": "1002",
+    "message": "Welcome Manufacturing Excellence Ltd! Your Current account 1002 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-23T15:47:24.107584",
+    "read": false
+  },
+  {
+    "id": 47,
+    "recipient": "1002",
+    "message": "Success! \u20b950000.0 deposited via DIRECT to Rahul Sharma (1002). New balance: \u20b950000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-23T15:48:02.430520",
+    "read": false
+  },
+  {
+    "id": 48,
+    "recipient": "1002",
+    "message": "Success! \u20b910000.0 withdrawn via ATM from Rahul Sharma (1002). New balance: \u20b940000.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-23T15:48:25.614664",
+    "read": false
+  },
+  {
+    "id": 49,
+    "recipient": "1003",
+    "message": "Welcome Amit Patel! Your Savings account 1003 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-23T21:18:32.528407",
+    "read": false
+  },
+  {
+    "id": 50,
+    "recipient": "1004",
+    "message": "Welcome Digital Solutions Pvt Ltd! Your Current account 1004 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-23T21:20:21.177526",
+    "read": false
+  },
+  {
+    "id": 51,
+    "recipient": "1004",
+    "message": "Success! \u20b950000.0 deposited via DIRECT to Sala Sala (1004). New balance: \u20b950000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-23T21:20:45.446036",
+    "read": false
+  },
+  {
+    "id": 52,
+    "recipient": "1004",
+    "message": "Success! \u20b92000.0 withdrawn via ATM from Sala Sala (1004). New balance: \u20b948000.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-23T21:21:08.585347",
+    "read": false
+  },
+  {
+    "id": 53,
+    "recipient": "1004",
+    "message": "Sent: \u20b98000.0 via NEFT to Amit Patel (1003). Bal: \u20b940000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-24T18:22:15.875013",
+    "read": false
+  },
+  {
+    "id": 54,
+    "recipient": "1003",
+    "message": "Received: \u20b98000.0 via NEFT from Sala Sala (1004). Bal: \u20b910000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-24T18:22:16.211490",
+    "read": false
+  },
+  {
+    "id": 55,
+    "recipient": "1002",
+    "message": "Welcome Priya Sharma! Your Savings account 1002 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-24T18:59:08.605179",
+    "read": false
+  },
+  {
+    "id": 56,
+    "recipient": "1003",
+    "message": "Welcome Global Finance Ltd! Your Current account 1003 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-24T19:00:33.627975",
+    "read": false
+  },
+  {
+    "id": 57,
+    "recipient": "1002",
+    "message": "Success! \u20b948000.0 deposited via DIRECT to Priya Sharma (1002). New balance: \u20b950000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-24T19:01:08.813350",
+    "read": false
+  },
+  {
+    "id": 58,
+    "recipient": "1002",
+    "message": "Success! \u20b92000.0 withdrawn via ATM from Priya Sharma (1002). New balance: \u20b948000.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-24T19:02:02.965798",
+    "read": false
+  },
+  {
+    "id": 59,
+    "recipient": "1002",
+    "message": "Sent: \u20b98000.0 via NEFT to Sala Anil Kumar (1003). Bal: \u20b940000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-24T19:02:40.933277",
+    "read": false
+  },
+  {
+    "id": 60,
+    "recipient": "1003",
+    "message": "Received: \u20b98000.0 via NEFT from Priya Sharma (1002). Bal: \u20b98000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-24T19:02:41.273187",
+    "read": false
+  },
+  {
+    "id": 61,
+    "recipient": "1002",
+    "message": "Welcome Priya Sharma! Your Savings account 1002 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-24T19:07:54.733252",
+    "read": false
+  },
+  {
+    "id": 62,
+    "recipient": "1003",
+    "message": "Welcome Global Finance Ltd! Your Current account 1003 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-24T19:08:54.216417",
+    "read": false
+  },
+  {
+    "id": 63,
+    "recipient": "1003",
+    "message": "Success! \u20b9100000.0 deposited via DIRECT to Sala Anil Kumar (1003). New balance: \u20b9100000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-24T19:09:27.605649",
+    "read": false
+  },
+  {
+    "id": 64,
+    "recipient": "1003",
+    "message": "Success! \u20b950000.0 withdrawn via ATM from Sala Anil Kumar (1003). New balance: \u20b950000.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-24T19:10:01.016682",
+    "read": false
+  },
+  {
+    "id": 65,
+    "recipient": "1003",
+    "message": "Sent: \u20b910000.0 via NEFT to Priya Sharma (1002). Bal: \u20b940000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-24T19:10:42.853271",
+    "read": false
+  },
+  {
+    "id": 66,
+    "recipient": "1002",
+    "message": "Received: \u20b910000.0 via NEFT from Sala Anil Kumar (1003). Bal: \u20b912000.0",
+    "type": "SUCCESS",
+    "mode": "NEFT",
+    "timestamp": "2026-07-24T19:10:43.201900",
+    "read": false
+  },
+  {
+    "id": 67,
+    "recipient": "1002",
+    "message": "Welcome Priya Sharma! Your Savings account 1002 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-24T19:31:23.324201",
+    "read": false
+  },
+  {
+    "id": 68,
+    "recipient": "1003",
+    "message": "Welcome Tech Innovations Pvt Ltd! Your Current account 1003 is now active.",
+    "type": "SUCCESS",
+    "mode": "WELCOME",
+    "timestamp": "2026-07-24T19:32:12.271284",
+    "read": false
+  },
+  {
+    "id": 69,
+    "recipient": "1003",
+    "message": "Success! \u20b950000.0 deposited via DIRECT to Mudit Sharma (1003). New balance: \u20b950000.0.",
+    "type": "SUCCESS",
+    "mode": "DIRECT",
+    "timestamp": "2026-07-24T19:32:46.739466",
+    "read": false
+  },
+  {
+    "id": 70,
+    "recipient": "1003",
+    "message": "Success! \u20b92000.0 withdrawn via ATM from Mudit Sharma (1003). New balance: \u20b948000.0.",
+    "type": "SUCCESS",
+    "mode": "ATM",
+    "timestamp": "2026-07-24T19:33:12.309753",
+    "read": false
+  },
+  {
+    "id": 71,
+    "recipient": "1003",
+    "message": "Sent: \u20b98000.0 via RTGS to Priya Sharma (1002). Bal: \u20b940000.0",
+    "type": "SUCCESS",
+    "mode": "RTGS",
+    "timestamp": "2026-07-24T19:33:45.255520",
+    "read": false
+  },
+  {
+    "id": 72,
+    "recipient": "1002",
+    "message": "Received: \u20b98000.0 via RTGS from Mudit Sharma (1003). Bal: \u20b910000.0",
+    "type": "SUCCESS",
+    "mode": "RTGS",
+    "timestamp": "2026-07-24T19:33:45.640889",
+    "read": false
+  }
+]

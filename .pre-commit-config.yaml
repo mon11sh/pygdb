@@ -1,0 +1,36 @@
+# Pre-commit hooks — run `pre-commit install` once, then they run on every commit.
+# Addresses audit H-2 (committed secrets) and H-3 (vulnerable deps) at the source.
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+      - id: detect-private-key
+      - id: check-yaml
+      - id: check-json
+
+  # Secret scanning — blocks committing keys/tokens/passwords
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
+
+  # Python lint + format
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.6
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+      - id: ruff-format
+
+  # Dependency vulnerability audit (report-only until deps are patched — H-3)
+  - repo: https://github.com/pypa/pip-audit
+    rev: v2.7.3
+    hooks:
+      - id: pip-audit
+        args: ["--strict", "--desc"]
+        # verbose local check; CI enforces the gate

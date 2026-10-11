@@ -1,0 +1,21 @@
+# Provider override: SQLite (no server; a .db file lives inside each container).
+#   docker compose -f docker-compose.yml -f docker-compose.sqlite.yml up --build
+# DATABASE_URL is cleared so each service uses its own local sqlite file.
+# Note: files live in the container — data resets on `docker compose down`.
+services:
+  auth-service:
+    environment:
+      DATABASE_PROVIDER: sqlite
+      DATABASE_URL: ""
+  users-service:
+    environment:
+      DATABASE_PROVIDER: sqlite
+      DATABASE_URL: ""
+  accounts-service:
+    environment:
+      DATABASE_PROVIDER: sqlite
+      DATABASE_URL: ""
+  transactions-service:
+    environment:
+      DATABASE_PROVIDER: sqlite
+      DATABASE_URL: ""

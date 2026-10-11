@@ -1,0 +1,56 @@
+# Provider override: MySQL (bundled container).
+#   docker compose -f docker-compose.yml -f docker-compose.mysql.yml up --build
+# All 4 data services use the SQLAlchemy MySQL path (DATABASE_URL). Each
+# auto-creates its own gdb_*_db. native_password keeps aiomysql auth happy.
+services:
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    ports: ["13306:3306"]         # host 13306 avoids clashing with local MySQL(s) on 3306/3307; inspect via Workbench at localhost:13306 (root/mysql)
+    volumes:
+      - mysqldata:/var/lib/mysql
+    healthcheck:
+      # Ping over TCP (127.0.0.1), NOT the local socket ("localhost"): during MySQL
+      # 8.0 first-init the temporary bootstrap server answers on the socket and would
+      # report "healthy" too early, so the app services connect before MySQL is really
+      # ready and crash. A TCP ping only passes once the real server is listening on
+      # the network port — which is exactly when the services need it. start_period
+      # gives the initial data-dir setup time before failures count.
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-pmysql"]
+      interval: 6s
+      timeout: 4s
+      retries: 30
+      start_period: 40s
+
+  auth-service:
+    environment:
+      DATABASE_PROVIDER: mysql
+      DATABASE_URL: mysql://root:mysql@mysql:3306/gdb_auth_db
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  users-service:
+    environment:
+      DATABASE_PROVIDER: mysql
+      DATABASE_URL: mysql://root:mysql@mysql:3306/gdb_users_db
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  accounts-service:
+    environment:
+      DATABASE_PROVIDER: mysql
+      DATABASE_URL: mysql://root:mysql@mysql:3306/gdb_accounts_db
+    depends_on:
+      mysql: { condition: service_healthy }
+
+  transactions-service:
+    environment:
+      DATABASE_PROVIDER: mysql
+      DATABASE_URL: mysql://root:mysql@mysql:3306/gdb_transactions_db
+    depends_on:
+      mysql: { condition: service_healthy }
+
+volumes:
+  mysqldata:
