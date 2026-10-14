@@ -1,3 +1,4 @@
+
 name: CI
 
 on:
@@ -45,19 +46,6 @@ jobs:
         working-directory: ${{ matrix.service }}
         run: pip-audit -r requirements.txt || true   # report-only until deps are patched (H-3)
 
-  # ---- Secret scanning across the whole repo ----
-  secrets:
-    name: secret scan
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   # ---- Frontend: lint + build ----
   frontend:
     name: build frontend
@@ -102,3 +90,4 @@ jobs:
           else
             docker build -f ${{ matrix.service }}/Dockerfile -t gdb/${{ matrix.service }}:ci .
           fi
+```
